@@ -20,10 +20,10 @@ RUN composer --version
 #RUN composer global require drush/drush
 #ENV PATH="{$HOME}/.composer/vendor/bin:${PATH}"
 #RUN drush --version
-RUN php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > drush \
-&& chmod +x drush \
-&& mv drush /usr/local/bin
-RUN drush --version
+RUN wget -O drush.phar https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar && \
+  chmod +x drush.phar && \
+  mv drush.phar /usr/local/bin/drush
+RUN drush --drush-launcher-version
 
 # Python package installer
 RUN pip --version
