@@ -29,7 +29,7 @@ RUN pip --version
 # AWS CLI tools
 RUN pip install --upgrade pip \
         awsebcli \
-        awscli
+        awscli 
 
 RUN mkdir ~/.aws
 
