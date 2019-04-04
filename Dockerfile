@@ -1,5 +1,5 @@
 FROM php:7.3.2-apache
-LABEL maintainer="Robert Bourne <robertbourne86+github@gmail.com>"
+LABEL maintainer="Robert Bourne (BourneDevLtd) <robertbourne86+github@gmail.com>"
 
 RUN apt-get -y update --fix-missing
 RUN apt-get upgrade -y
@@ -29,7 +29,7 @@ RUN pip --version
 # AWS CLI tools
 RUN pip install --upgrade pip \
         awsebcli \
-        awscli 
+        awscli
 
 RUN mkdir ~/.aws
 
