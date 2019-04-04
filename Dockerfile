@@ -17,8 +17,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer --version
 
 # Drush
-RUN composer global require drush/drush
-ENV PATH="{$HOME}/.composer/vendor/bin:${PATH}"
+#RUN composer global require drush/drush
+#ENV PATH="{$HOME}/.composer/vendor/bin:${PATH}"
+#RUN drush --version
+RUN php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > drush \
+&& chmod +x drush \
+&& mv drush /usr/local/bin
 RUN drush --version
 
 # Python package installer
