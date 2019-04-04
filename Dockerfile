@@ -26,7 +26,7 @@ RUN pip --version
 
 # AWS CLI tools
 ## EBS
-pip install awsebcli --upgrade --user
+RUN pip install awsebcli --upgrade --user
 RUN eb --version
 
 # PHP Extensions
