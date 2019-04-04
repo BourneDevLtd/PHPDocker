@@ -1,4 +1,5 @@
 FROM php:7.3.2-apache
+LABEL maintainer="Robert Bourne <robertbourne86+github@gmail.com>"
 
 RUN apt-get -y update --fix-missing
 RUN apt-get upgrade -y
@@ -17,9 +18,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer --version
 
 # Drush
-#RUN composer global require drush/drush
-#ENV PATH="{$HOME}/.composer/vendor/bin:${PATH}"
-#RUN drush --version
 RUN wget -O drush.phar https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar && \
   chmod +x drush.phar && \
   mv drush.phar /usr/local/bin/drush
@@ -29,9 +27,13 @@ RUN drush --drush-launcher-version
 RUN pip --version
 
 # AWS CLI tools
-## EBS
-RUN pip install awsebcli --upgrade --user
-RUN eb --version
+RUN pip install --upgrade pip \
+        awsebcli \
+        awscli
+
+RUN mkdir ~/.aws
+
+#RUN eb --version
 
 # PHP Extensions
 RUN pecl install apcu \
