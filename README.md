@@ -2,7 +2,7 @@
 
 Contains docker images for an apache server running different versions of PHP.
 
-PHP (various versions, based on tag) is prepackaged with extensions (APC, PDO_MYSQL, MYSQLI).
+PHP (various versions, based on tag) is prepackaged with extensions (APC, PDO_MYSQL, MYSQLI, GD).
 
 Apache has rewrite headers module enabled.
 
