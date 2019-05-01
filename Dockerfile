@@ -38,7 +38,8 @@ RUN mkdir ~/.aws
 # PHP Extensions
 RUN pecl install apcu \
     && docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install mysqli
+    && docker-php-ext-install mysqli \
+    && docker-php-ext-install gd
 
 # XDebug
 RUN yes | pecl install xdebug \
