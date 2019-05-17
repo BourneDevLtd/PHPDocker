@@ -1,4 +1,4 @@
-FROM php:7.3.2-apache
+FROM php:5.6-apache
 LABEL maintainer="Robert Bourne (BourneDevLtd) <robertbourne86+github@gmail.com>"
 
 RUN apt-get -y update --fix-missing
@@ -9,7 +9,7 @@ RUN apt-get -y install apt-utils nano wget dialog \
     build-essential git curl libcurl3 libcurl3-dev zip
 
 # Install important libraries
-RUN apt-get -y install --fix-missing apt-utils build-essential git curl libcurl3 libcurl3-dev zip libzip-dev \
+RUN apt-get -y install --fix-missing apt-utils build-essential git curl libcurl3 libcurl3-dev zip libzip-dev
     libmcrypt-dev libsqlite3-dev libsqlite3-0 mysql-client zlib1g-dev \
     libicu-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev python-pip
 
@@ -36,17 +36,11 @@ RUN mkdir ~/.aws
 #RUN eb --version
 
 # PHP Extensions
-RUN pecl install apcu \
+RUN pecl install apcu-4.0.11 \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install gd \
     && docker-php-ext-install zip
-
-# XDebug
-RUN yes | pecl install xdebug \
-    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 # Enable apache modules
 RUN a2enmod rewrite headers
