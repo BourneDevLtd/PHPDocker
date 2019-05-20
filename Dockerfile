@@ -21,12 +21,10 @@ RUN wget -O drush.phar https://github.com/drush-ops/drush-launcher/releases/down
 RUN drush --drush-launcher-version
 
 # Python package installer
-RUN pip --version
+RUN pip3 --version
 
 # AWS CLI tools
-RUN pip install --upgrade pip \
-        awsebcli \
-        awscli
+RUN pip3 install --upgrade awsebcli awscli
 
 RUN mkdir ~/.aws
 
