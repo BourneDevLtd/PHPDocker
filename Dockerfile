@@ -8,7 +8,7 @@ RUN apt-get upgrade -y
 RUN apt-get -y install --fix-missing apt-utils nano wget dialog \
     build-essential git curl libcurl3 libcurl3-dev zip libzip-dev \
     libmcrypt-dev libsqlite3-dev libsqlite3-0 mysql-client zlib1g-dev \
-    libicu-dev libfreetype6-dev libjpeg62-turbo-dev python-pip libpng-dev 
+    libicu-dev libfreetype6-dev libjpeg62-turbo-dev python3-venv python3-pip libpng-dev 
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
