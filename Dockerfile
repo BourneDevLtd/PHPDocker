@@ -1,4 +1,4 @@
-FROM php:7.3.2-apache
+FROM php:7.3.5-apache
 LABEL maintainer="Robert Bourne (BourneDevLtd) <robertbourne86+github@gmail.com>"
 
 RUN apt-get -y update --fix-missing
